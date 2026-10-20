@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/2ba18a43cc.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form>
+        <h1>FIND PHARMACIES</h1>
+        <h2>Feature coming soon!</h2>
+        <div class="menu-container">
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="menu-links" id="menu-links" hidden>
+                <a href="./homepage.html">Homepage</a>
+                <a href="./form.html">Submit Case</a>
+                <a href="./pharmacies.html">Find Pharmacies</a>
+            </nav>
+        </div>
+    </form>
+    <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const menuLinks = document.getElementById("menu-links");
+
+    menuToggle.addEventListener("click", function () {
+        menuLinks.hidden = !menuLinks.hidden;
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            !menuLinks.hidden
+        );
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/2ba18a43cc.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form id="disease-form">
+        <h1>Disease Report</h1>
+        <div class="input-wrapper">
+            <i class="fa-solid fa-virus input-icon"></i>
+            <select name="disease-type" id="disease-type">
+                <option value="" disabled selected>Select Disease</option>
+                <option value="flu">Flu</option>
+                <option value="influenza">Cold</option>
+                <option value="covid-19">Covid-19</option>
+                <option value="norovirus">Norovirus</option>
+                <option value="chickenpox">Chickenpox</option>
+                <option value="ringworm">Ringworm</option>
+                <option value="other">Other Contagious Diseases</option>
+            </select>
+        </div>
+        <div class="input-wrapper">
+            <i class="fa-solid fa-location-dot input-icon"></i>
+            <input type="zipcode" 
+                placeholder="Zipcode"
+                inputmode="numeric"
+                pattern="[0-9]{5}"
+                minlength="5"
+                maxlength="5"
+            >
+        </div>
+        <div class="input-wrapper">
+            <i class="fa-solid fa-calendar-days input-icon"></i>
+            <input type="date" placeholder="Date" >
+        </div>
+        <div class="input-wrapper">
+            <i class="fa-solid fa-thermometer-half input-icon"></i>
+            <textarea 
+                placeholder="Write your experience" 
+                rows="4" 
+    
+            ></textarea>
+        </div>
+         <div class="buttons">
+            <button type="button" class="back-button">Go Back</button>
+            <button type="submit" class="submit-button">Submit</button>
+        </div>
+        <div class="menu-container">
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="menu-links" id="menu-links" hidden>
+                <a href="./homepage.html">Homepage</a>
+                <a href="./form.html">Submit Case</a>
+                <a href="./pharmacies.html">Find Pharmacies</a>
+            </nav>
+        </div>
+    </form>
+    <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const menuLinks = document.getElementById("menu-links");
+
+    menuToggle.addEventListener("click", function () {
+        menuLinks.hidden = !menuLinks.hidden;
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            !menuLinks.hidden
+        );
+    });
+    </script>
+    <script>
+        const form = document.getElementById("disease-form");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            setTimeout(function() {
+                window.location.href = "submission.html";
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
