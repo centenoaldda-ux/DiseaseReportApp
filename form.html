@@ -81,6 +81,7 @@
     </script>
     <script>
         const form = document.getElementById("disease-form");
+        const backButton = document.querySelector(".back-button");
 
         form.addEventListener("submit", function(event) {
             event.preventDefault();
@@ -88,6 +89,10 @@
             setTimeout(function() {
                 window.location.href = "submission.html";
             }, 3000);
+        });
+
+        backButton.addEventListener("click", function() {
+            window.location.href = "homepage.html";
         });
     </script>
 </body>
