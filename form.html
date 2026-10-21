@@ -6,6 +6,37 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/2ba18a43cc.js" crossorigin="anonymous"></script>
+    <script> function validateForm() {
+            const diseaseType = document.getElementById("disease-type").value;
+            const stateCode = document.getElementById("StateCode").value;
+            const zipcode = document.getElementById("zipcode").value;
+            const date = document.getElementById("date").value;
+            const currentDate = new Date().toISOString().split("T")[0];
+
+            const StateCodeList = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", 
+            "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", 
+            "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", 
+            "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
+            "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI","WY"];
+
+            if (!diseaseType || !stateCode || !zipcode || !date) {
+                alert("Please fill in all fields.");
+                return false;
+
+            } else if (stateCode && !StateCodeList.includes(stateCode.toUpperCase())) {
+                alert("Please enter a valid state code.");
+                return false;
+                
+            } else if (date > currentDate) {
+                alert("Symptom start date can not be in the future.");
+                return false;
+
+            } else {
+
+                return true;
+
+            }
+        }</script>
 </head>
 <body>
     <form id="disease-form">
@@ -25,7 +56,17 @@
         </div>
         <div class="input-wrapper">
             <i class="fa-solid fa-location-dot input-icon"></i>
+            <input type="StateCode" 
+                id="StateCode"
+                placeholder="State Code (e.g. VA, NY, TX)"
+                minlength="2"
+                maxlength="2"
+            >
+        </div>
+        <div class="input-wrapper">
+            <i class="fa-solid fa-location-dot input-icon"></i>
             <input type="zipcode" 
+                id="zipcode"
                 placeholder="Zipcode"
                 inputmode="numeric"
                 pattern="[0-9]{5}"
@@ -35,7 +76,7 @@
         </div>
         <div class="input-wrapper">
             <i class="fa-solid fa-calendar-days input-icon"></i>
-            <input type="date" placeholder="Date" >
+            <input type="date" id="date" placeholder="Date" >
         </div>
         <div class="input-wrapper">
             <i class="fa-solid fa-thermometer-half input-icon"></i>
@@ -87,7 +128,9 @@
             event.preventDefault();
 
             setTimeout(function() {
+                if (validateForm()) {
                 window.location.href = "submission.html";
+                }
             }, 3000);
         });
 
