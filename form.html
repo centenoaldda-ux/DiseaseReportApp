@@ -127,6 +127,26 @@
         form.addEventListener("submit", function(event) {
             event.preventDefault();
 
+            const diseaseSelect = document.getElementById("disease-type");
+            const diseaseType = diseaseSelect.options[diseaseSelect.selectedIndex].text;
+
+            let reports = JSON.parse(localStorage.getItem("diseaseReports")) || [];
+            
+            reports.push({
+                diseaseType: diseaseType,
+                zipcode: document.getElementById("zipcode").value,
+                date: document.querySelector('input[type="date"]').value,
+                experience: document.querySelector('textarea').value,
+                x: Math.floor(Math.random() * 100),
+                y: Math.floor(Math.random() * 100)
+            });
+
+            localStorage.setItem("diseaseReports", JSON.stringify(reports));
+            
+            setTimeout(function() {
+                pinFill.style.height = "100%";
+            }, 50);
+            
             setTimeout(function() {
                 if (validateForm()) {
                 window.location.href = "submission.html";
