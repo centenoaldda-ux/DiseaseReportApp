@@ -143,6 +143,11 @@
 
             localStorage.setItem("diseaseReports", JSON.stringify(reports));
             
+            const loadingScreen = document.getElementById("loading-screen");
+            const pinFill = document.querySelector(".pin-fill");
+
+            loadingScreen.hidden = false;
+            
             setTimeout(function() {
                 pinFill.style.height = "100%";
             }, 50);
