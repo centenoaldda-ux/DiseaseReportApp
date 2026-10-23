@@ -169,3 +169,128 @@ form .input-wrapper textarea {
 .menu-links[hidden] {
     display: none;
 }
+
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: #232323;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.loading-screen[hidden] {
+    display: none;
+}
+
+.loading-content h2 {
+    color: white;
+    margin-top: 30px;
+}
+
+.loading-content p {
+    color: #cccccc;
+}
+
+.loading-pin {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    border: 4px solid rgb(0, 186, 152);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-sizing: border-box;
+}
+
+.pin-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: rgb(0, 186, 152);
+    transition: height 3s linear;
+}
+
+.pin-hole {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: white;
+    ;
+    z-index: 2;
+
+}
+
+.disease-popup {
+    position: absolute;
+    background: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    width: 220px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    transform: translate(-50%, -100%);
+    z-index: 10;
+}
+
+.disease-popup h3 {
+    margin: 0 0 8px;
+}
+
+.disease-popup p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+body.map-page {
+    display: block;
+    position: relative;
+    height: 100vh;
+    min-height: 0;
+    overflow-x: hidden;
+}
+
+body.map-page h1 {
+    text-align: center;
+    padding-top: 35px;
+    color: #232323;
+}
+
+body.map-page .map-pin {
+    position: absolute;
+    border: none;
+    background: none;
+    color: rgb(0, 186, 152);
+    font-size: 32px;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+body.map-page .disease-popup {
+    position: absolute;
+    background: white;
+    color: #232323;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    width: 150px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    transform: translate(13px, -50%);
+    z-index: 10;
+}
