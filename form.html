@@ -140,6 +140,9 @@
         form.addEventListener("submit", function(event) {
             event.preventDefault();
 
+            if (!validateForm()) {
+            return;
+        }
             const diseaseSelect = document.getElementById("disease-type");
             const diseaseType = diseaseSelect.options[diseaseSelect.selectedIndex].text;
 
@@ -166,9 +169,7 @@
             }, 50);
             
             setTimeout(function() {
-                if (validateForm()) {
                 window.location.href = "submission.html";
-                }
             }, 3000);
         });
 
