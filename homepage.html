@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/2ba18a43cc.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <form>
+<body class="map-page">
         <h1>HOMEPAGE/MAP FEATURE</h1>
         <div class="menu-container">
             <button
@@ -25,7 +24,6 @@
                 <a href="./pharmacies.html">Find Pharmacies</a>
             </nav>
         </div>
-    </form>
     <script>
     const menuToggle = document.getElementById("menu-toggle");
     const menuLinks = document.getElementById("menu-links");
@@ -37,6 +35,43 @@
             "aria-expanded",
             !menuLinks.hidden
         );
+    });
+        
+    const reports = JSON.parse(
+        localStorage.getItem("diseaseReports") || "[]"
+    );
+
+    reports.forEach(function(report) {
+        const pin = document.createElement("button");
+        pin.className = "map-pin";
+        pin.type = "button";
+        pin.innerHTML = '<i class="fa-solid fa-location-dot"></i>';
+        pin.style.left = (5 + Math.random() * 90) + "%";
+        pin.style.top = (100 + Math.random() * 200) + "vh";
+        pin.setAttribute("aria-label", "Show disease");
+
+        const popup = document.createElement("div");
+        popup.className = "disease-popup";
+
+        const diseaseName = document.createElement("h3");
+        diseaseName.textContent = report.diseaseType;
+
+        const experience = document.createElement("p");
+        experience.textContent = report.experience;
+
+        popup.appendChild(diseaseName);
+        popup.appendChild(experience);
+
+        popup.style.left = pin.style.left;
+        popup.style.top = pin.style.top;
+        popup.hidden = true;
+
+        pin.addEventListener("click", function() {
+            popup.hidden = !popup.hidden;
+        });
+
+        document.body.appendChild(popup);
+        document.body.appendChild(pin);
     });
     </script>
 </body>
