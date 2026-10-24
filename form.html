@@ -27,6 +27,9 @@
                 alert("Please enter a valid state code.");
                 return false;
                 
+            } else if (zipcode && !/^\d{5}$/.test(zipcode)) {
+                alert("Please enter a valid 5-digit zipcode.");
+                return false;
             } else if (date > currentDate) {
                 alert("Symptom start date can not be in the future.");
                 return false;
