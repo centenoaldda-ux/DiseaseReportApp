@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/2ba18a43cc.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="map-page">
+    <div class="menu-container">
+
+        <button
+            type="button"
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="menu-links" id="menu-links" hidden>
+            <a href="#" id="open-search-form">Search Form</a>
+            <a href="./map.html">Map</a>
+            <a href="./form.html">Submit Case</a>
+            <a href="./pharmacies.html">Find Pharmacies</a>
+        </nav>
+    </div>
+
+    <div class="map-container">
+        <div id="map"></div>
+
+        <div class="slide-panel location-panel" id="location-panel">
+            <div class="panel-content">
+                <h3>Search a Different Location</h3>
+
+                <label for="new-state">State</label>
+                <input
+                    type="text"
+                    id="new-state"
+                    placeholder="Enter State Code (e.g., VA)"
+                    inputmode="text"
+                    minlength="2"
+                    maxlength="2"
+                >
+                <label for="new-zipcode">ZIP Code</label>
+                <input
+                    type="text"
+                    id="new-zipcode"
+                    placeholder="Enter ZIP code"
+                    inputmode="numeric"
+                    pattern="[0-9]{5}"
+                    minlength="5"
+                    maxlength="5"
+                >
+                <button id="search-zipcode" type="button">
+                    Search
+                </button>
+            </div>
+            <button
+                class="panel-toggle"
+                type="button"
+                aria-label="Open location search"
+                aria-expanded="false"
+                id="location-toggle">
+                &gt;
+            </button>
+        </div>
+
+        <div class="slide-panel filters-panel" id="filters-panel">
+            <div class="panel-content">
+                <form id="search-form" novalidate>
+
+                    <h2>Search for a Disease</h2>
+                    <h3>Select Diseases</h3>
+
+                    <div class="disease-options">
+                        <label>
+                            <input type="checkbox"
+                                name="disease-type"
+                                value="flu">
+                            Flu
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                name="disease-type"
+                                value="cold">
+                            Cold
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                name="disease-type"
+                                value="covid-19">
+                            Covid-19
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                name="disease-type"
+                                value="norovirus">
+                            Norovirus
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                name="disease-type"
+                                value="chickenpox">
+                            Chickenpox
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                name="disease-type"
+                                value="ringworm">
+                            Ringworm
+                        </label>
+
+                        <label>
+                            <input type="checkbox"
+                                name="disease-type"
+                                value="other">
+                            Other Contagious Diseases
+                        </label>
+                    </div>
+
+                    <h3>Location to Search In</h3>
+
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-location-dot input-icon"></i>
+                        <input
+                            type="text"
+                            id="StateCode"
+                            name="StateCode"
+                            placeholder="State Code"
+                            minlength="2"
+                            maxlength="2"
+                        >
+                    </div>
+
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-location-dot input-icon"></i>
+                        <input
+                            type="text"
+                            id="zipcode"
+                            name="zipcode"
+                            placeholder="Zipcode"
+                            maxlength="5"
+                        >
+                    </div>
+                    <h3>Date Range</h3>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-calendar-days input-icon"></i>
+                        <input
+                            type="date"
+                            id="start-date"
+                            name="start-date"
+                        >
+                    </div>
+
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-calendar-days input-icon"></i>
+                        <input
+                            type="date"
+                            id="end-date"
+                            name="end-date"
+                        >
+                    </div>
+                    <div class="buttons">
+
+                        <button
+                            type="button"
+                            class="report-button"
+                            onclick="window.location.href='./form.html'">
+                            Report a Disease Case
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="submit-button">
+                            Submit Search
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <button
+                class="panel-toggle"
+                type="button"
+                aria-label="Open search filters"
+                aria-expanded="false"
+                id="filters-toggle">
+                &gt;
+            </button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="map.js"></script>
+
+</body>
+</html>
