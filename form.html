@@ -41,7 +41,7 @@
             }
         }
         //function to convert zip code to latitude and longitude using OpenStreetMap's Nominatim API
-        async function zipToCoords(zipCode) {
+        async function zipToCoords(zipcode, stateCode) {
             const url = `https://api.zippopotam.us/us/${zipcode}`;
             const response = await fetch(url);
 
@@ -57,8 +57,8 @@
         }
 
             return {
-                latitude: parseFloat(results[0].lat),
-                longitude: parseFloat(results[0].lon)
+                latitude: parseFloat(place.latitude),
+                longitude: parseFloat(place.longitude)
             };
         }
         </script>
@@ -162,7 +162,7 @@
         const form = document.getElementById("disease-form");
         const backButton = document.querySelector(".back-button");
 
-        form.addEventListener("submit", function(event) {
+        form.addEventListener("submit", async function(event) {
             event.preventDefault();
 
             //validates form and if valid, converts zip code to latitude and longitude to check if valid first
