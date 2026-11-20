@@ -119,13 +119,13 @@ function displayReports() {
 
 
         const stateMatches =
-            !currentStateCode ||
-            report.stateCode === currentStateCode;
+            !searchCriteria.stateCode ||
+            report.stateCode === searchCriteria.stateCode;
 
 
         const zipcodeMatches =
-            !currentZipcode ||
-            report.zipcode === currentZipcode;
+            !searchCriteria.zipcode ||
+            String(report.zipcode) === String(searchCriteria.zipcode);
 
         const startDateMatches =
             !searchCriteria.startDate ||
